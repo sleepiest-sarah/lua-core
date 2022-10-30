@@ -44,6 +44,10 @@ function TestTableUtils:testAddKeysLeft()
   lu.assertIsTable(res.c)
   lu.assertEquals(res.c.d, 15)
   lu.assertIsTable(res.c.f)
+  
+  res = tableUtils.addKeysLeft({a = 5, b = 10},{a = 0, b = 0})
+  
+  lu.assertEquals(res,{a = 5, b = 10})
 end
   
 lu.LuaUnit.verbosity = lu.VERBOSITY_VERBOSE
