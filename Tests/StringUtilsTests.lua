@@ -52,5 +52,44 @@ function TestStringUtils:testSplit()
   lu.assertEquals(c, "")
 end
 
+function TestStringUtils.testConvertToTimerFormat()
+  local res = stringUtils.getTimerFormat(39)
+  
+  lu.assertEquals(res, "00:00:39")
+  
+  res = stringUtils.getTimerFormat(3600)
+  
+  lu.assertEquals(res, "01:00:00")
+  
+  res = stringUtils.getTimerFormat(7262)
+  
+  lu.assertEquals(res, "02:01:02")
+  
+  res = stringUtils.getTimerFormat(nil)
+  
+  lu.assertEquals(res, "-")
+  
+  res = stringUtils.getTimerFormat(0)
+  
+  lu.assertEquals(res, "00:00:00")
+end
+
+function TestStringUtils.testGetLongFormDurationFormat()
+  local res = stringUtils.getLongFormDurationFormat(3801)
+  
+  lu.assertEquals(res, "1 hour 3 minutes")
+end
+
+function TestStringUtils:testToNumber()
+  local res = stringUtils.toNumber("Aitek")
+  
+  lu.assertEquals(type(res), "number")
+  lu.assertEquals(res, 91)
+  
+  res = stringUtils.toNumber("Alraera")
+  
+  lu.assertEquals(res, 119)
+end
+
 lu.LuaUnit.verbosity = lu.VERBOSITY_VERBOSE
 lu.LuaUnit.run('TestStringUtils')
