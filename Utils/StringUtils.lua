@@ -105,4 +105,20 @@ function m.toNumber(s)
   return res
 end
 
+function m.isDigit(s)
+  return string.match(s, "%d") and true or false
+end
+
+function m.isLetter(s)
+  return string.match(s, "%a") and true or false
+end
+
+function m.insert(s, pos, ins_str)
+  return string.sub(s, 1, pos) .. ins_str .. string.sub(s, pos + 1)
+end
+
+function m.charAt(s, pos)
+  return string.sub(s, pos, pos)
+end
+
 return m
